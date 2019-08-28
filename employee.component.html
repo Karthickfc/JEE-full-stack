@@ -1,0 +1,26 @@
+
+<h1>Employee Details</h1>
+<app-employee-count
+    ></app-employee-count>
+    <br/>
+    <br/>
+    <input type="text"/>
+
+<table border="1">
+    <tr>
+        <th>Employee Code</th>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Annual salary</th>
+        <th>Date of Birth</th>
+    </tr>
+<tr  *ngFor='let emp of employees' ngIf='selectedRadioButtonvalue=="all"|| selectedRadioButtonvalue==emp.gender'>
+
+   <td> {{emp.code}}</td>
+<td>{{emp.name}}</td>
+<td>{{emp.gender}}</td>
+<td>{{emp.annualSalary}}</td>
+<td>{{emp.dateOfBirth}}</td>
+</tr>
+
+</table>
