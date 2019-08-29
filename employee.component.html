@@ -1,26 +1,28 @@
-
-<h1>Employee Details</h1>
-<app-employee-count
-    ></app-employee-count>
-    <br/>
-    <br/>
-    <input type="text"/>
-
-<table border="1">
-    <tr>
-        <th>Employee Code</th>
-        <th>Name</th>
-        <th>Gender</th>
-        <th>Annual salary</th>
-        <th>Date of Birth</th>
-    </tr>
-<tr  *ngFor='let emp of employees' ngIf='selectedRadioButtonvalue=="all"|| selectedRadioButtonvalue==emp.gender'>
-
-   <td> {{emp.code}}</td>
-<td>{{emp.name}}</td>
-<td>{{emp.gender}}</td>
-<td>{{emp.annualSalary}}</td>
-<td>{{emp.dateOfBirth}}</td>
-</tr>
-
-</table>
+<div class="container">
+    <h1>Details of {{employee.name}}</h1>
+    <table class="table">
+        <tr>
+            <td>Employee Code</td>
+            <td>{{employee.code}}</td>
+        </tr>
+        <tr>
+                <td>Name</td>
+                <td>{{employee.name}}</td>
+            </tr>
+            <tr>
+                    <td>Gender</td>
+                    <td>{{employee.gender}}</td>
+                </tr>
+                <tr>
+                        <td>Annual Salary</td>
+                        <td>{{employee.annualSalary}}</td>
+                    </tr>
+                    <tr>
+                            <td>Date of Birth</td>
+                            <td>{{employee.dateOfBirth}}</td>
+                        </tr>
+                        <tr>
+                        <td><button class=" btn btn-danger" (click)='navigate()'>Return back</button></td>
+                    </tr>
+    </table>
+   

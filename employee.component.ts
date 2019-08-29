@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Employee } from './employee';
+import { EmployeeService } from './employee.service';
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: 'app-employee',
@@ -6,70 +9,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./employee.component.css']
 })
 export class EmployeeComponent implements OnInit {
-    selectedRadioButtonvalue:string="all";
-
-  employees=
-    [
+  employee:Employee;
 
 
-      {
-
-          code: 'emp101', name: 'Tom', gender: 'Male',
-
-          annualSalary: 5500, dateOfBirth: '6/25/1988'
-
-      },
-
-      {
-
-          code: 'emp102', name: 'Alex', gender: 'Male',
-
-          annualSalary: 5700.95, dateOfBirth: '9/6/1982'
-
-      },
-
-      {
-
-          code: 'emp103', name: 'Mike', gender: 'Male',
-
-          annualSalary: 5900, dateOfBirth: '12/8/1979'
-
-      },
-
-      {
-
-          code: 'emp104', name: 'Mary', gender: 'Female',
-
-          annualSalary: 6500.826, dateOfBirth: '10/14/1980'
-
-      },
-
-      {
-
-          code: 'emp105', name: 'Nancy', gender: 'Female',
-
-          annualSalary: 6700.826, dateOfBirth: '12/15/1982'
-
-      }
-    ];
-
-  constructor() { }
+  constructor( private employeeservice:EmployeeService,
+    private activatedroute:ActivatedRoute,private router:Router) { }
 
   ngOnInit() {
+    let  code:string=this.activatedroute.snapshot.params["id"];
+    this.employee=this.employeeservice.getEmployees().find(emp=>emp.code===code)
   }
-  getAllEmployeesCount():number{
-     return this.employees.length;
+  navigate(){
+    this.router.navigate(["/employees"]);
   }
-  getMaleEmployeesCount():number{
-      return this.employees.filter(e=>e.gender==='Male').length;
-  }
-  getFemaleEmployeesCount():number{
-      return this.employees.filter(e=>e.gender==='Female').length;
-  }
-  onRadioButtonvaluechanger(value:string){
-      alert("Hello");
-      console.log(value);
-  }
-
 
 }
